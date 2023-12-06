@@ -28,14 +28,14 @@ app.get('/weather', (request, response) => {
 
   if (!lat || !lon || !searchQuery) {
     console.log('Missing required parameters (lat, lon, searchQuery)');
-    return response.status(400).json({ error: 'Missing required parameters (lat, lon, searchQuery)' });
+    response.status(400).json({ error: 'Missing required parameters (lat, lon, searchQuery)' });
   }
 
   const city = data.find(entry => entry.lat === lat && entry.lon === lon);
 
   if (!city) {
     console.log('City not found for the given parameters');
-    return response.status(404).json({ error: 'City not found for the given parameters' });
+    response.status(404).json({ error: 'City not found for the given parameters' });
   }
 
   
